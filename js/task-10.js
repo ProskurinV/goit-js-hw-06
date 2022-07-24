@@ -1,40 +1,35 @@
-// function getRandomHexColor() {
-//   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-// }
+const inputNum = document.querySelector('input');
+const btnCreate = document.querySelector('button[data-create]');
+const btnDestroy = document.querySelector('button[data-destroy]');
+const boxes = document.querySelector('#boxes');
 
-// // function getRandomRGBColor() {
-// //   const red = Math.random(Math.round(0, 1) * 255);
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
 
-// //   const green = Math.random(Math.round(0, 1) * 255);
+const createBoxes = amount => {
+  const elementsToAdd = [];
+  for (let i = 0; i < amount; i += 1) {
+    const div = document.createElement('div');
+    div.style.height = `${30 + 10 * i}px`;
+    div.style.width = `${30 + 10 * i}px`;
+    div.style.background = getRandomHexColor();
+    elementsToAdd.push(div);
+  }
+  return elementsToAdd;
+};
 
-// //   const blue = Math.random(Math.round(0, 1) * 255);
+const destroyBoxes = () => {
+  boxes.innerHTML = '';
+};
 
-// //   return `rgb(${red}, ${green}, ${blue})`;
-// // }
+btnCreate.addEventListener('click', () => {
+  let boxesToAdd = createBoxes(inputNum.value);
+  boxes.append(...boxesToAdd);
+});
 
-// // const refs = {
-// //   inputValue: document.querySelector('input'),
-// //   btnCreate: document.querySelector('button[data-create]'),
-// //   btnDestroy: document.querySelector('button[data-destroy]'),
-// //   boxlistHTML: document.querySelector('#boxes'),
-// //   boxWrapper: [],
-// // };
+console.log(inputNum.value);
 
-// // const createBoxes = amount => {
-// //   let boxSize = 30;
-
-// //   amount = refs.inputValue.value;
-// //   for (let i = 0; i < amount; i += 1) {
-// //     let growBox = boxSize + i * 10;
-// //     const boxItem = `<div style='width: ${growBox}px, height: ${growBox}px; background-color: ${getRandomHexColor}'></div>`;
-// //     refs.boxWrapper.push(boxItem);
-// //   }
-// //   // return refs.boxWrapper;
-// //   refs.boxlistHTML.append(refs.boxWrapper);
-// //   // console.log(...refs.boxWrapper);
-// // };
-
-// // const destroyBoxes = () => {
-// //   refs.boxlistHTML.innerHTML = '';
-// //   refs.inputValue.value = '';
-// // };
+btnDestroy.addEventListener('click', () => {
+  destroyBoxes.call();
+});

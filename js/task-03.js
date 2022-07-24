@@ -14,18 +14,15 @@ const images = [
 ];
 
 const imgContainer = document.querySelector('.gallery');
-// const img = document.querySelector('.gallery-list');
 
 const makeImg = images.map(({ url, alt }) => {
   imgContainer.insertAdjacentHTML(
     'afterbegin',
-    `<li><img class="gallery-list" src="${url}" alt="${alt}"/></li>`
+    `<li><img class="gallery-list" src="${url}" alt="${alt}" width=200/></li>`
   );
 });
 
 imgContainer.style.display = 'flex';
-
 imgContainer.style.listStyle = 'none';
 imgContainer.style.gap = '20px';
 imgContainer.style.justifyContent = 'center';
-img.style.width = '200px';
