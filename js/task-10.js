@@ -9,12 +9,14 @@ function getRandomHexColor() {
 
 const createBoxes = amount => {
   const elementsToAdd = [];
+
   for (let i = 0; i < amount; i += 1) {
-    const div = document.createElement('div');
-    div.style.height = `${30 + 10 * i}px`;
-    div.style.width = `${30 + 10 * i}px`;
-    div.style.background = getRandomHexColor();
-    elementsToAdd.push(div);
+    const box = document.createElement('box');
+    // let boxSize = 30;
+    // box.style.height = boxSize + i * 30;
+    // box.style.width = `${60 + 10 * i}px`;
+    box.style.background = getRandomHexColor();
+    elementsToAdd.push(box);
   }
   return elementsToAdd;
 };
